@@ -1,0 +1,76 @@
+interface User {
+    userName: string,
+    password: string,
+    email: string;
+    phoneNumber: number,
+    college: string,
+    events: {
+            eventId: string;
+            teamId: string;
+        }[],
+}
+
+//store teams in a separate collection for which payment is not done
+interface TeamsMidle{
+}
+
+interface Teams {
+    id : string;
+    leaderId: string;
+    teamMembers: string[]; // it will also include leader's id
+    eventId: string;
+    paymentCompleted: boolean;
+}
+
+interface Events {
+    id: string;
+    name: string;
+    date: string;
+    registrationActive: boolean;
+    Price: String,
+    Poster: String,
+    Rules: String,
+    teamSize: number;
+    minMembers: number;
+    maxNumberOfTeams: number;
+    description:[],
+}
+
+interface Payments {
+    id: string;
+    userId: string; //payment initator
+    eventId: string;
+    amount: number;
+    status: "FAILED" | "SUCCESS" | "ABONDONED";
+    razorpay_order_id: String,
+    razorpay_payment_id: String,
+    razorpay_signature: String,
+}
+
+
+
+// Firebase table
+// events 
+
+//google auth..... (important)
+
+
+interface Event{
+    id: string;
+    name: string;
+    icons: string;
+    tagline: string;
+    description: EventDesciption[];
+    show: boolean;
+    registrationActive: boolean;
+    teamSize: number;
+    minMembers: number;
+}
+
+interface EventDesciption {
+    title?: string;
+    paragraphs: {
+        type: "para" | "list";
+        contents: string[];
+    }[];
+}
